@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///C:/Users/KL3VAN/Downloads/index_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BelMan Consultancy — Project management, process design and data analysis. Based in Leuven, Belgium.">
+<title>BelMan Consultancy — Structured Strategy. Measurable Results.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./BelMan_Consultancy_files/css2" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#1b2d5b;
+  --navy-dark:#0f1d3d;
+  --gold:#c9a84c;
+  --gold-light:#e8d5a3;
+  --gold-dim:rgba(201,168,76,0.35);
+  --bg:#07090f;
+  --bg2:#0d1020;
+  --white:#f0ede8;
+  --grey:#a8aab5;
+  --grey-dim:#6a6d7a;
+  --border:rgba(255,255,255,0.07);
+  --border-gold:rgba(201,168,76,0.2);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* Canvas background */
+canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 4rem;
+  background:rgba(7,9,15,0.8);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border-gold);
+}
+.nav-logo{display:flex;align-items:center;gap:0.9rem;text-decoration:none;}
+.logo-mark{width:36px;height:36px;flex-shrink:0;}
+.logo-text .name{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:600;
+  color:var(--white);
+  letter-spacing:0.04em;line-height:1.1;
+}
+.logo-text .tagline{
+  display:block;font-size:0.58rem;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-top:2px;
+}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{
+  font-size:0.73rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--grey);text-decoration:none;transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--white);}
+
+/* ── COMMON ── */
+section{position:relative;z-index:1;}
+.label{
+  font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.2rem;
+}
+.section-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.9rem,3.5vw,3rem);
+  font-weight:300;line-height:1.18;color:var(--white);
+}
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.2),transparent);
+  margin:0 4rem;
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:0 4rem;padding-top:5rem;
+}
+.hero-eyebrow{
+  font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:2rem;
+  opacity:0;animation:fadeUp 0.8s 0.3s forwards;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,6.5vw,5.8rem);
+  font-weight:300;line-height:1.06;max-width:840px;color:var(--white);
+  opacity:0;animation:fadeUp 0.8s 0.5s forwards;
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-motto{
+  margin-top:1.8rem;
+  font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--grey-dim);
+  opacity:0;animation:fadeUp 0.8s 0.65s forwards;
+}
+.hero-sub{
+  margin-top:1.4rem;max-width:480px;
+  font-size:0.93rem;line-height:1.85;color:var(--grey);font-weight:300;
+  opacity:0;animation:fadeUp 0.8s 0.75s forwards;
+}
+.hero-cta{
+  margin-top:3rem;display:flex;gap:1.2rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.8s 0.9s forwards;
+}
+.btn-primary{
+  padding:0.88rem 2.2rem;background:var(--gold);color:#07090f;
+  font-size:0.73rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;
+  text-decoration:none;transition:background 0.3s;cursor:pointer;border:none;display:inline-block;
+}
+.btn-primary:hover{background:var(--gold-light);}
+.btn-ghost{
+  padding:0.88rem 2.2rem;
+  border:1px solid rgba(201,168,76,0.4);color:var(--white);
+  font-size:0.73rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:400;
+  text-decoration:none;transition:all 0.3s;background:transparent;cursor:pointer;display:inline-block;
+}
+.btn-ghost:hover{border-color:rgba(201,168,76,0.7);background:rgba(201,168,76,0.06);}
+
+/* ── ABOUT ── */
+.about{
+  padding:9rem 4rem;
+  display:grid;grid-template-columns:1.1fr 0.9fr;gap:7rem;align-items:start;
+}
+.about-body{color:var(--grey);font-size:0.93rem;line-height:1.9;font-weight:300;margin-top:1.4rem;}
+.about-body+.about-body{margin-top:1rem;}
+.stats-row{display:flex;gap:1.5rem;margin-bottom:2.5rem;}
+.stat{
+  flex:1;padding:1.8rem 1.4rem;
+  border:1px solid var(--border-gold);
+  background:rgba(27,45,91,0.12);
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:300;color:var(--white);line-height:1;
+}
+.stat-label{
+  font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--grey);margin-top:0.5rem;line-height:1.5;
+}
+.pillars{display:flex;flex-direction:column;}
+.pillar{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.95rem 0;border-bottom:1px solid var(--border);
+}
+.pillar:first-child{border-top:1px solid var(--border);}
+.pillar-dot{width:5px;height:5px;background:var(--gold);flex-shrink:0;}
+.pillar-text{font-size:0.88rem;color:var(--grey);font-weight:300;}
+
+/* ── SERVICES ── */
+.services{padding:9rem 4rem;background:rgba(27,45,91,0.05);}
+.services .section-header{margin-bottom:4.5rem;}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,0.04);
+}
+.service-card{
+  padding:3rem 2.5rem;background:var(--bg);
+  position:relative;overflow:hidden;transition:background 0.4s;
+}
+.service-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;
+}
+.service-card:hover{background:rgba(27,45,91,0.25);}
+.service-card:hover::after{transform:scaleX(1);}
+.svc-icon{margin-bottom:2rem;}
+.svc-icon svg{width:30px;height:30px;stroke:var(--gold);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+.svc-title{font-size:1rem;font-weight:500;color:var(--white);margin-bottom:0.85rem;letter-spacing:0.02em;}
+.svc-desc{font-size:0.86rem;color:var(--grey);line-height:1.82;font-weight:300;}
+.svc-tags{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:0.45rem;}
+.tag{
+  font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.28rem 0.7rem;
+  border:1px solid rgba(255,255,255,0.1);
+  color:var(--grey);
+}
+
+/* ── PROCESS ── */
+.process{padding:9rem 4rem;}
+.process .section-header{margin-bottom:4.5rem;}
+.process-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,0.04);
+}
+.process-step{padding:2.8rem 2rem;background:var(--bg);position:relative;}
+.step-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.5rem;font-weight:300;
+  color:rgba(201,168,76,0.1);
+  line-height:1;margin-bottom:1.2rem;
+}
+.step-title{font-size:0.92rem;font-weight:500;color:var(--white);margin-bottom:0.6rem;letter-spacing:0.04em;}
+.step-desc{font-size:0.83rem;color:var(--grey);line-height:1.8;font-weight:300;}
+
+/* ── DATA ── */
+.data-section{padding:9rem 4rem;background:rgba(27,45,91,0.05);}
+.data-inner{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center;}
+.data-visual{position:relative;height:280px;}
+.bar-chart{display:flex;align-items:flex-end;gap:10px;height:100%;border-bottom:1px solid rgba(255,255,255,0.1);}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end;}
+.bar-fill{width:100%;position:relative;}
+.bar-fill.gold{background:rgba(201,168,76,0.18);border:1px solid rgba(201,168,76,0.35);}
+.bar-fill.gold::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);}
+.bar-fill.navy{background:rgba(27,45,91,0.5);border:1px solid rgba(27,45,91,0.9);}
+.bar-fill.navy::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#3d5898;}
+.bar-label{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-dim);text-align:center;}
+.data-content .section-h{margin-top:0.6rem;}
+.data-body{color:var(--grey);font-size:0.92rem;line-height:1.9;font-weight:300;margin-top:1.4rem;}
+.data-points{margin-top:2rem;display:flex;flex-direction:column;gap:0.85rem;}
+.data-point{display:flex;align-items:center;gap:1rem;font-size:0.86rem;color:var(--grey);}
+.data-point::before{content:'';width:18px;height:1px;background:var(--gold);flex-shrink:0;}
+
+/* ── CONTACT ── */
+.contact{padding:10rem 4rem;text-align:center;}
+.contact-mark{margin-bottom:2.5rem;display:flex;justify-content:center;}
+.contact .label{display:inline-block;}
+.contact h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;
+  line-height:1.15;color:var(--white);margin:0.8rem 0;
+}
+.contact h2 em{font-style:italic;color:var(--gold);}
+.contact-sub{color:var(--grey);font-size:0.92rem;margin:1.2rem auto 3rem;line-height:1.8;max-width:460px;}
+.contact-email{
+  font-family:'Cormorant Garamond',serif;font-size:1.7rem;
+  color:var(--white);text-decoration:none;
+  border-bottom:1px solid rgba(201,168,76,0.35);padding-bottom:0.3rem;
+  transition:color 0.3s,border-color 0.3s;display:inline-block;margin-bottom:3.5rem;
+}
+.contact-email:hover{color:var(--gold);border-color:var(--gold);}
+.contact-meta{display:flex;justify-content:center;gap:3.5rem;flex-wrap:wrap;}
+.meta-item{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--grey-dim);}
+.meta-item span{display:block;color:var(--grey);margin-top:0.35rem;letter-spacing:0.05em;font-weight:400;}
+
+/* ── FOOTER ── */
+footer{
+  padding:1.8rem 4rem;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.footer-left{display:flex;align-items:center;gap:0.8rem;}
+.footer-mark{width:22px;height:22px;}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-weight:600;color:var(--white);letter-spacing:0.06em;}
+.footer-copy{font-size:0.7rem;color:var(--grey-dim);}
+.footer-url{font-size:0.7rem;color:var(--grey-dim);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(22px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:1.1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero,.about,.services,.process,.data-section,.contact{padding-left:1.5rem;padding-right:1.5rem;}
+  .divider{margin:0 1.5rem;}
+  .about{grid-template-columns:1fr;gap:3rem;}
+  .services-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr 1fr;}
+  .data-inner{grid-template-columns:1fr;gap:3.5rem;}
+  .data-visual{height:220px;}
+  .stats-row{flex-wrap:wrap;}
+  footer{padding:1.5rem;}
+}
+@media(max-width:560px){
+  .process-grid{grid-template-columns:1fr;}
+  .contact-meta{gap:2rem;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg" width="1920" height="919"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="file:///C:/Users/KL3VAN/Downloads/index_1.html#home" class="nav-logo" aria-label="BelMan Consultancy home">
+    <svg class="logo-mark" viewBox="0 0 60 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="4,52 18,18 28,36 38,18 56,52" fill="none" stroke="#1b2d5b" stroke-width="5.5" stroke-linejoin="round"></polygon>
+      <line x1="4" y1="52" x2="56" y2="52" stroke="#1b2d5b" stroke-width="5.5" stroke-linecap="round"></line>
+      <polyline points="16,40 28,14 38,28 50,8" fill="none" stroke="#c9a84c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      <polygon points="47,4 56,15 44,13" fill="#c9a84c"></polygon>
+    </svg>
+    <div class="logo-text">
+      <span class="name">BelMan Consultancy</span>
+      <span class="tagline">Belgian Management</span>
+    </div>
+  </a>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="file:///C:/Users/KL3VAN/Downloads/index_1.html#about">About</a>
+    <a href="file:///C:/Users/KL3VAN/Downloads/index_1.html#services">Services</a>
+    <a href="file:///C:/Users/KL3VAN/Downloads/index_1.html#process">Process</a>
+    <a href="file:///C:/Users/KL3VAN/Downloads/index_1.html#data">Data</a>
+    <a href="file:///C:/Users/KL3VAN/Downloads/index_1.html#contact">Contact</a>
+  </nav>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-eyebrow">Belgian Management — Leuven, Belgium</div>
+  <h1>Project management<br>driven by <em>data.</em><br>Defined by results.</h1>
+  <p class="hero-motto">Structured Strategy. Measurable Results.</p>
+  <p class="hero-sub">BelMan Consultancy delivers end-to-end project management, process engineering, and data-driven insights — bringing structure and momentum to your most critical work.</p>
+  <div class="hero-cta">
+    <a href="file:///C:/Users/KL3VAN/Downloads/index_1.html#contact" class="btn-primary">Start a conversation</a>
+    <a href="file:///C:/Users/KL3VAN/Downloads/index_1.html#services" class="btn-ghost">What we do</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div>
+    <div class="label">About BelMan</div>
+    <h2 class="section-h">Nine years of turning complexity into clarity.</h2>
+    <p class="about-body">BelMan Consultancy — short for Belgian Management — is an independent consulting firm based in Leuven, Belgium. We specialise in project management, process design, and data analysis for organisations operating in complex, fast-moving environments.</p>
+    <p class="about-body">With nine years of field experience across infrastructure, technology, and operations, we bring both technical depth and structured methodology to every engagement. We don't just manage your project — we build the processes and analytics that make future projects easier.</p>
+  </div>
+  <div>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Years field experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">BE</div>
+        <div class="stat-label">Leuven · Belgium</div>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">End-to-end project delivery</span></div>
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Process creation &amp; continuous improvement</span></div>
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Data analysis &amp; performance reporting</span></div>
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Stakeholder alignment &amp; governance</span></div>
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Independent — embedded in your team</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <div class="label">Core services</div>
+    <h2 class="section-h">Everything your project needs<br>to move, track, and improve.</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="16" y1="2" x2="16" y2="6"></line><line x1="7" y1="13" x2="7" y2="13" stroke-width="2"></line><line x1="11" y1="13" x2="17" y2="13"></line><line x1="7" y1="17" x2="7" y2="17" stroke-width="2"></line><line x1="11" y1="17" x2="17" y2="17"></line></svg>
+      </div>
+      <div class="svc-title">Project Management</div>
+      <p class="svc-desc">Full lifecycle delivery from scoping and planning through execution, risk management, and formal closure. Your projects land on time, on scope, and on budget — with complete traceability throughout.</p>
+      <div class="svc-tags"><span class="tag">Planning</span><span class="tag">Risk</span><span class="tag">Governance</span><span class="tag">Delivery</span></div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="6" height="6" rx="1"></rect><rect x="9" y="3" width="6" height="6" rx="1"></rect><rect x="16" y="3" width="6" height="6" rx="1"></rect><rect x="2" y="15" width="6" height="6" rx="1"></rect><rect x="9" y="15" width="6" height="6" rx="1"></rect><line x1="5" y1="9" x2="5" y2="15"></line><line x1="12" y1="9" x2="12" y2="15"></line><line x1="5" y1="12" x2="12" y2="12"></line><line x1="19" y1="9" x2="19" y2="21"></line></svg>
+      </div>
+      <div class="svc-title">Process Design &amp; Maintenance</div>
+      <p class="svc-desc">We map how work actually flows, identify friction and gaps, then design documented processes your teams can follow, audit, and improve. Processes that outlast any individual project.</p>
+      <div class="svc-tags"><span class="tag">BPMN</span><span class="tag">Workflows</span><span class="tag">SOPs</span><span class="tag">Optimisation</span></div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      </div>
+      <div class="svc-title">Data Analysis &amp; Reporting</div>
+      <p class="svc-desc">Turning raw project data into actionable intelligence. Custom KPI frameworks, Power BI dashboards, and structured reporting cycles that give leadership the visibility to make confident, timely decisions.</p>
+      <div class="svc-tags"><span class="tag">Power BI</span><span class="tag">KPIs</span><span class="tag">Dashboards</span><span class="tag">Analytics</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-header">
+    <div class="label">How we work</div>
+    <h2 class="section-h">A repeatable methodology.<br>Adapted to every context.</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Understand</div>
+      <p class="step-desc">We map your environment, stakeholders, constraints, and objectives — before making any delivery assumptions.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Structure</div>
+      <p class="step-desc">We build the planning frameworks, process documentation, and reporting infrastructure your project needs to run cleanly.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Execute</div>
+      <p class="step-desc">Embedded in your team, we drive day-to-day delivery with technical credibility and consistent structured follow-through.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Measure</div>
+      <p class="step-desc">Data analysis and continuous reporting keep all parties aligned — and produce lasting tools your team retains after close.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DATA -->
+<section class="data-section" id="data">
+  <div class="data-inner">
+    <div class="data-visual" aria-hidden="true">
+      <div class="bar-chart">
+        <div class="bar">
+          <div class="bar-fill navy" style="height:52%;"></div>
+          <div class="bar-label">Scope</div>
+        </div>
+        <div class="bar">
+          <div class="bar-fill navy" style="height:73%;"></div>
+          <div class="bar-label">Timeline</div>
+        </div>
+        <div class="bar">
+          <div class="bar-fill gold" style="height:91%;"></div>
+          <div class="bar-label">Budget</div>
+        </div>
+        <div class="bar">
+          <div class="bar-fill navy" style="height:58%;"></div>
+          <div class="bar-label">Risk</div>
+        </div>
+        <div class="bar">
+          <div class="bar-fill gold" style="height:96%;"></div>
+          <div class="bar-label">Quality</div>
+        </div>
+        <div class="bar">
+          <div class="bar-fill navy" style="height:65%;"></div>
+          <div class="bar-label">Resources</div>
+        </div>
+      </div>
+    </div>
+    <div class="data-content">
+      <div class="label">Data-driven delivery</div>
+      <h2 class="section-h">Decisions backed by numbers, not assumptions.</h2>
+      <p class="data-body">Most projects fail not from lack of effort but from lack of visibility. BelMan Consultancy brings a data analysis layer to every engagement — providing the metrics, trends, and early warnings needed to manage proactively rather than reactively.</p>
+      <div class="data-points">
+        <div class="data-point">Custom KPI frameworks tailored to your project type</div>
+        <div class="data-point">Power BI dashboards built for your stakeholders</div>
+        <div class="data-point">Progress tracking with deviation analysis</div>
+        <div class="data-point">Structured reporting cycles and governance packs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-mark">
+    <svg width="52" height="52" viewBox="0 0 60 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="4,52 18,18 28,36 38,18 56,52" fill="none" stroke="#1b2d5b" stroke-width="5.5" stroke-linejoin="round"></polygon>
+      <line x1="4" y1="52" x2="56" y2="52" stroke="#1b2d5b" stroke-width="5.5" stroke-linecap="round"></line>
+      <polyline points="16,40 28,14 38,28 50,8" fill="none" stroke="#c9a84c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      <polygon points="47,4 56,15 44,13" fill="#c9a84c"></polygon>
+    </svg>
+  </div>
+  <div class="label">Get in touch</div>
+  <h2>Let's bring <em>structure</em><br>to your next challenge.</h2>
+  <p class="contact-sub">Based in Leuven, Belgium — available across the Benelux and beyond. Whether you have a project in motion or one about to start, let's talk.</p>
+  <a href="mailto:contact@belmanconsultancy.com" class="contact-email">contact@belmanconsultancy.com</a>
+  <div class="contact-meta">
+    <div class="meta-item">Location<span>Leuven, Belgium</span></div>
+    <div class="meta-item">Website<span>belmanconsultancy.com</span></div>
+    <div class="meta-item">Availability<span>Open to new engagements</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <svg class="footer-mark" viewBox="0 0 60 56" fill="none" aria-hidden="true">
+      <polygon points="4,52 18,18 28,36 38,18 56,52" fill="none" stroke="#1b2d5b" stroke-width="6" stroke-linejoin="round"></polygon>
+      <line x1="4" y1="52" x2="56" y2="52" stroke="#1b2d5b" stroke-width="6" stroke-linecap="round"></line>
+      <polyline points="16,40 28,14 38,28 50,8" fill="none" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      <polygon points="47,4 56,15 44,16" fill="#c9a84c"></polygon>
+    </svg>
+    <span class="footer-name">BelMan Consultancy</span>
+  </div>
+  <div class="footer-copy">© 2026 BelMan Consultancy — Belgian Management. Leuven, Belgium.</div>
+  <div class="footer-url">belmanconsultancy.com</div>
+</footer>
+
+<script>
+(function(){
+  const canvas = document.getElementById('bg');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], mouse = {x: null, y: null};
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', function(e){ mouse.x = e.clientX; mouse.y = e.clientY; });
+
+  for(let i = 0; i < 85; i++){
+    particles.push({
+      x: Math.random() * 1920,
+      y: Math.random() * 1200,
+      vx: (Math.random() - 0.5) * 0.22,
+      vy: (Math.random() - 0.5) * 0.22,
+      r: Math.random() * 1.3 + 0.3,
+      a: Math.random() * 0.35 + 0.08,
+      type: Math.random() > 0.65 ? 'gold' : 'navy'
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    for(let i = 0; i < particles.length; i++){
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < 0) p.x = W; if(p.x > W) p.x = 0;
+      if(p.y < 0) p.y = H; if(p.y > H) p.y = 0;
+      if(mouse.x !== null){
+        const dx = mouse.x - p.x, dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < 110){ p.x -= dx * 0.011; p.y -= dy * 0.011; }
+      }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.type === 'gold'
+        ? 'rgba(201,168,76,' + p.a + ')'
+        : 'rgba(61,88,152,' + (p.a + 0.1) + ')';
+      ctx.fill();
+      for(let j = i + 1; j < particles.length; j++){
+        const q = particles[j];
+        const dx = p.x - q.x, dy = p.y - q.y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if(d < 145){
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = 'rgba(201,168,76,' + (0.07 * (1 - d/145)) + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var el = document.querySelector(a.getAttribute('href'));
+      if(el) el.scrollIntoView({behavior: 'smooth'});
+    });
+  });
+})();
+</script>
+
+
+</body></html>
