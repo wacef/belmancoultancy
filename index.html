@@ -7,8 +7,8 @@
 <title>BelMan Consultancy — Structured Strategy. Measurable Results.</title>
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="assests/favicon.png"/>
-<link rel="shortcut icon" href="src/favicon.png"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="shortcut icon" href="favicon.png"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -201,6 +201,96 @@ section{position:relative;z-index:1;}
 .svc-tags{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:0.45rem;}
 .tag{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.28rem 0.7rem;border:1px solid rgba(255,255,255,0.1);color:var(--grey);}
 
+/* ── SERVICE CARD VISUALS ── */
+.svc-visual{
+  margin-top:2rem;
+  border:1px solid rgba(255,255,255,0.07);
+  background:#0a0d16;
+  border-radius:6px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* — Workflow diagram (PM card) — */
+.wf-diagram{padding:1.4rem 1.2rem;}
+.wf-topbar{display:flex;gap:0.4rem;margin-bottom:1.2rem;}
+.wf-topbar span{width:7px;height:7px;border-radius:50%;}
+.wf-topbar span:nth-child(1){background:rgba(255,100,100,0.45);}
+.wf-topbar span:nth-child(2){background:rgba(255,200,80,0.45);}
+.wf-topbar span:nth-child(3){background:rgba(80,200,100,0.4);}
+.wf-row{display:flex;align-items:center;gap:0;margin-bottom:0.6rem;flex-wrap:nowrap;overflow:hidden;}
+.wf-node{
+  font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.4rem 0.65rem;border-radius:3px;white-space:nowrap;flex-shrink:0;
+}
+.wf-node.done{background:rgba(14,45,94,0.7);color:#93c5fd;border:1px solid rgba(61,88,152,0.5);}
+.wf-node.active{background:rgba(184,152,80,0.18);color:var(--gold-light);border:1px solid rgba(184,152,80,0.45);}
+.wf-node.pending{background:rgba(255,255,255,0.04);color:var(--grey-dim);border:1px solid var(--border);}
+.wf-arrow{width:18px;height:1px;background:rgba(184,152,80,0.35);flex-shrink:0;position:relative;}
+.wf-arrow::after{content:'▸';position:absolute;right:-5px;top:-7px;font-size:0.5rem;color:rgba(184,152,80,0.5);}
+.wf-gantt{margin-top:0.8rem;display:flex;flex-direction:column;gap:5px;}
+.gantt-row{display:flex;align-items:center;gap:8px;}
+.gantt-label{font-size:0.55rem;color:var(--grey-dim);width:52px;flex-shrink:0;text-align:right;letter-spacing:0.05em;}
+.gantt-track{flex:1;height:7px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden;}
+.gantt-fill{height:100%;border-radius:2px;}
+.gantt-fill.g1{background:linear-gradient(90deg,#1b3d7a,#3d5898);width:80%;}
+.gantt-fill.g2{background:linear-gradient(90deg,rgba(184,152,80,0.6),rgba(184,152,80,0.3));width:55%;margin-left:20%;}
+.gantt-fill.g3{background:linear-gradient(90deg,#1b3d7a,#3d5898);width:40%;margin-left:50%;}
+.gantt-fill.g4{background:linear-gradient(90deg,rgba(184,152,80,0.5),rgba(184,152,80,0.2));width:25%;margin-left:72%;}
+
+/* — Process flow (Process card) — */
+.pf-diagram{padding:1.4rem 1.2rem;}
+.pf-title{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.pf-flow{display:flex;flex-direction:column;gap:0;}
+.pf-step{
+  display:flex;align-items:stretch;gap:0;
+}
+.pf-connector{width:32px;display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.pf-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:10px;}
+.pf-dot.done{background:var(--gold);}
+.pf-dot.active{background:#6ee7b7;box-shadow:0 0 6px rgba(110,231,183,0.4);}
+.pf-dot.pending{background:rgba(255,255,255,0.15);}
+.pf-vline{width:1px;flex:1;background:rgba(184,152,80,0.2);margin:0 auto;}
+.pf-box{
+  flex:1;margin:6px 0;padding:0.5rem 0.7rem;
+  border-radius:4px;font-size:0.65rem;
+}
+.pf-box.done{background:rgba(14,45,94,0.5);border:1px solid rgba(61,88,152,0.4);color:#93c5fd;}
+.pf-box.active{background:rgba(184,152,80,0.12);border:1px solid rgba(184,152,80,0.4);color:var(--gold-light);}
+.pf-box.pending{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--grey-dim);}
+.pf-box-label{font-weight:500;margin-bottom:2px;}
+.pf-box-sub{font-size:0.58rem;opacity:0.7;}
+.pf-decision{
+  margin:4px 0 4px 32px;
+  padding:0.45rem 0.7rem;border-radius:0;
+  border:1px dashed rgba(184,152,80,0.3);
+  font-size:0.6rem;color:var(--grey-dim);
+  display:flex;align-items:center;gap:0.5rem;
+}
+.pf-decision::before{content:'◆';color:rgba(184,152,80,0.4);font-size:0.55rem;}
+
+/* — Power BI / KPI panel (Data card) — */
+.bi-panel{padding:1.2rem;}
+.bi-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:1rem;padding-bottom:0.6rem;
+  border-bottom:1px solid var(--border);
+}
+.bi-title{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
+.bi-badge{font-size:0.55rem;padding:0.2rem 0.5rem;background:rgba(110,231,183,0.12);color:#6ee7b7;border:1px solid rgba(110,231,183,0.2);border-radius:20px;}
+.bi-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1rem;}
+.bi-kpi{padding:0.55rem 0.5rem;border:1px solid var(--border);background:rgba(255,255,255,0.02);text-align:center;}
+.bi-kpi-val{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--white);line-height:1;}
+.bi-kpi-val.up{color:#6ee7b7;}
+.bi-kpi-val.warn{color:#fbbf24;}
+.bi-kpi-lab{font-size:0.52rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey-dim);margin-top:3px;}
+.bi-chart{height:72px;position:relative;border:1px solid var(--border);background:rgba(255,255,255,0.02);overflow:hidden;border-radius:3px;}
+.bi-chart-bars{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:flex-end;gap:4px;padding:0 8px;}
+.bi-bar{flex:1;border-radius:2px 2px 0 0;}
+.bi-bar.n{background:rgba(61,88,152,0.55);border-top:1px solid #3d5898;}
+.bi-bar.g{background:rgba(184,152,80,0.35);border-top:1px solid var(--gold);}
+.bi-trend-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+
 /* ── PROCESS ── */
 .process{padding:9rem 4rem;background:rgba(14,45,94,0.04);}
 .process-grid{
@@ -208,7 +298,7 @@ section{position:relative;z-index:1;}
   gap:1px;background:rgba(255,255,255,0.04);margin-top:4.5rem;
 }
 .process-step{padding:2.8rem 2rem;background:var(--bg);}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(184,152,80,0.1);line-height:1;margin-bottom:1.2rem;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(184,152,80,0.55);line-height:1;margin-bottom:1.2rem;}
 .step-title{font-size:0.92rem;font-weight:500;color:var(--white);margin-bottom:0.6rem;}
 .step-desc{font-size:0.83rem;color:var(--grey);line-height:1.8;font-weight:300;}
 
@@ -341,7 +431,7 @@ footer{
 <!-- ══ NAV ══ -->
 <nav>
   <a href="#home" class="nav-logo" aria-label="BelMan Consultancy — home">
-    <img src="src/logo_no_moto.png" alt="BelMan Consultancy" height="38"/>
+    <img src="logo_no_moto.png" alt="BelMan Consultancy" height="38"/>
   </a>
   <div class="nav-links" role="navigation" aria-label="Main navigation">
     <a href="#about">About</a>
@@ -355,7 +445,7 @@ footer{
 
 <!-- ══ HERO ══ -->
 <section class="hero" id="home">
-  <img src="src/full_logo.png" alt="BelMan Consultancy — Structured Strategy. Measurable Results." class="hero-logo"/>
+  <img src="full_logo.png" alt="BelMan Consultancy — Structured Strategy. Measurable Results." class="hero-logo"/>
   <div class="hero-eyebrow">Belgian Management Consultancy — Leuven, Belgium</div>
   <h1>Project management<br>driven by <em>data.</em><br>Structured for execution.</h1>
   <p class="hero-motto">Structured Strategy. Measurable Results.</p>
@@ -449,6 +539,8 @@ footer{
     <h2 class="section-h">Everything your project needs<br>to move, track, and improve.</h2>
   </div>
   <div class="services-grid">
+
+    <!-- ── Card 1: Project Management + Workflow Diagram ── -->
     <div class="service-card">
       <div class="svc-icon">
         <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="7" y1="13" x2="7" y2="13" stroke-width="2"/><line x1="11" y1="13" x2="17" y2="13"/><line x1="7" y1="17" x2="7" y2="17" stroke-width="2"/><line x1="11" y1="17" x2="17" y2="17"/></svg>
@@ -456,7 +548,43 @@ footer{
       <div class="svc-title">Project Management</div>
       <p class="svc-desc">Full lifecycle delivery from scoping and planning through execution, risk management, and formal closure. Your projects land on time, on scope, and on budget — with complete governance throughout.</p>
       <div class="svc-tags"><span class="tag">Planning</span><span class="tag">Risk</span><span class="tag">Governance</span><span class="tag">Delivery</span></div>
+
+      <!-- Project Workflow Diagram + Gantt -->
+      <div class="svc-visual">
+        <div class="wf-diagram">
+          <div class="wf-topbar"><span></span><span></span><span></span></div>
+          <div class="wf-row">
+            <div class="wf-node done">Initiation</div>
+            <div class="wf-arrow"></div>
+            <div class="wf-node done">Planning</div>
+            <div class="wf-arrow"></div>
+            <div class="wf-node active">Execution</div>
+            <div class="wf-arrow"></div>
+            <div class="wf-node pending">Closure</div>
+          </div>
+          <div class="wf-gantt">
+            <div class="gantt-row">
+              <div class="gantt-label">Scope</div>
+              <div class="gantt-track"><div class="gantt-fill g1"></div></div>
+            </div>
+            <div class="gantt-row">
+              <div class="gantt-label">Design</div>
+              <div class="gantt-track"><div class="gantt-fill g2"></div></div>
+            </div>
+            <div class="gantt-row">
+              <div class="gantt-label">Build</div>
+              <div class="gantt-track"><div class="gantt-fill g3"></div></div>
+            </div>
+            <div class="gantt-row">
+              <div class="gantt-label">Handover</div>
+              <div class="gantt-track"><div class="gantt-fill g4"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- ── Card 2: Process Design + Flow Visualization ── -->
     <div class="service-card">
       <div class="svc-icon">
         <svg viewBox="0 0 24 24"><rect x="2" y="3" width="6" height="5" rx="1"/><rect x="10" y="3" width="6" height="5" rx="1"/><rect x="2" y="16" width="6" height="5" rx="1"/><rect x="10" y="16" width="6" height="5" rx="1"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="13" y1="8" x2="13" y2="16"/><line x1="5" y1="12" x2="13" y2="12"/><line x1="18" y1="3" x2="22" y2="3"/><line x1="18" y1="8" x2="22" y2="8"/><line x1="20" y1="3" x2="20" y2="21"/></svg>
@@ -464,7 +592,35 @@ footer{
       <div class="svc-title">Process Design &amp; Maintenance</div>
       <p class="svc-desc">We map how work actually flows, identify friction and gaps, then design documented processes your teams can follow, audit, and improve. Processes that outlast any individual project.</p>
       <div class="svc-tags"><span class="tag">BPMN</span><span class="tag">Workflows</span><span class="tag">SOPs</span><span class="tag">Optimisation</span></div>
+
+      <!-- Process Flow Visualization -->
+      <div class="svc-visual">
+        <div class="pf-diagram">
+          <div class="pf-title">Process Flow — Request Handling</div>
+          <div class="pf-flow">
+            <div class="pf-step">
+              <div class="pf-connector"><div class="pf-dot done"></div><div class="pf-vline"></div></div>
+              <div class="pf-box done"><div class="pf-box-label">Intake &amp; Triage</div><div class="pf-box-sub">Request received · Owner assigned</div></div>
+            </div>
+            <div class="pf-decision">Gateway: Priority level?</div>
+            <div class="pf-step">
+              <div class="pf-connector"><div class="pf-dot done"></div><div class="pf-vline"></div></div>
+              <div class="pf-box done"><div class="pf-box-label">Analysis &amp; Scoping</div><div class="pf-box-sub">Impact assessed · Resources confirmed</div></div>
+            </div>
+            <div class="pf-step">
+              <div class="pf-connector"><div class="pf-dot active"></div><div class="pf-vline"></div></div>
+              <div class="pf-box active"><div class="pf-box-label">Execution &amp; Tracking</div><div class="pf-box-sub">In progress · Milestones logged</div></div>
+            </div>
+            <div class="pf-step">
+              <div class="pf-connector"><div class="pf-dot pending"></div></div>
+              <div class="pf-box pending"><div class="pf-box-label">Review &amp; Closure</div><div class="pf-box-sub">Sign-off · Documentation</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- ── Card 3: Data Analysis + Power BI Interface ── -->
     <div class="service-card">
       <div class="svc-icon">
         <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -472,7 +628,55 @@ footer{
       <div class="svc-title">Data Analysis &amp; Reporting</div>
       <p class="svc-desc">Turning raw project data into actionable intelligence. Custom KPI frameworks, Power BI dashboards, and structured reporting cycles that give leadership the visibility to make confident, timely decisions.</p>
       <div class="svc-tags"><span class="tag">Power BI</span><span class="tag">KPIs</span><span class="tag">Dashboards</span><span class="tag">Analytics</span></div>
+
+      <!-- Power BI-inspired KPI Dashboard -->
+      <div class="svc-visual">
+        <div class="bi-panel">
+          <div class="bi-header">
+            <div class="bi-title">Project Analytics — Q2 2026</div>
+            <div class="bi-badge">● Live</div>
+          </div>
+          <div class="bi-kpis">
+            <div class="bi-kpi">
+              <div class="bi-kpi-val up">96%</div>
+              <div class="bi-kpi-lab">On-time</div>
+            </div>
+            <div class="bi-kpi">
+              <div class="bi-kpi-val">€ 2.4M</div>
+              <div class="bi-kpi-lab">Budget</div>
+            </div>
+            <div class="bi-kpi">
+              <div class="bi-kpi-val warn">3</div>
+              <div class="bi-kpi-lab">Risks</div>
+            </div>
+          </div>
+          <div class="bi-chart">
+            <div class="bi-chart-bars">
+              <div class="bi-bar n" style="height:48%"></div>
+              <div class="bi-bar n" style="height:62%"></div>
+              <div class="bi-bar g" style="height:75%"></div>
+              <div class="bi-bar n" style="height:55%"></div>
+              <div class="bi-bar g" style="height:88%"></div>
+              <div class="bi-bar n" style="height:70%"></div>
+              <div class="bi-bar g" style="height:92%"></div>
+            </div>
+            <svg class="bi-trend-svg" viewBox="0 0 280 72" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(184,152,80,0.25)"/>
+                  <stop offset="100%" stop-color="rgba(184,152,80,0)"/>
+                </linearGradient>
+              </defs>
+              <polyline points="0,58 40,46 80,34 120,42 160,20 200,28 240,12 280,8"
+                fill="none" stroke="rgba(184,152,80,0.7)" stroke-width="1.5"/>
+              <polygon points="0,58 40,46 80,34 120,42 160,20 200,28 240,12 280,8 280,72 0,72"
+                fill="url(#tg)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -583,7 +787,7 @@ footer{
 <!-- ══ CONTACT ══ -->
 <section class="contact" id="contact">
   <div class="contact-logo-wrap">
-    <img src="src/full_logo.png" alt="BelMan Consultancy" height="72"/>
+    <img src="full_logo.png" alt="BelMan Consultancy" height="72"/>
   </div>
   <span class="label">Get in touch</span>
   <h2>Let's bring <em>structure</em><br>to your next challenge.</h2>
@@ -599,7 +803,7 @@ footer{
 <!-- ══ FOOTER ══ -->
 <footer>
   <a href="#home" class="footer-logo" aria-label="BelMan Consultancy">
-    <img src="src/logo_no_moto.png" alt="BelMan Consultancy" height="24"/>
+    <img src="logo_no_moto.png" alt="BelMan Consultancy" height="24"/>
   </a>
   <div class="footer-copy">© 2026 BelMan Consultancy — Belgian Management. Leuven, Belgium.</div>
   <div class="footer-url">belmanconsultancy.com</div>
